@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Header() {
-  return null;
+  return <h1>freeCodeCamp LeaderBoard</h1>;
 };
