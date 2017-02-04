@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import Header from 'components/Header';
+import LeaderBoard from 'components/LeaderBoard';
 
 import './app.scss';
-import './app.css';
 
-export default class App extends Component {
-  render() {
-    return <h1 className='text-primary text-center'>Hello World!</h1>;
-  }
+export default function App() {
+  return (
+    <div>
+      <Header />
+      <LeaderBoard />
+    </div>
+  );
 }
