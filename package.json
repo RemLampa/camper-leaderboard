@@ -1,7 +1,7 @@
 {
-  "name": "fcc-react-project",
-  "version": "0.2.1",
-  "description": "A simple boilerplate for Free Code Camp React projects and exercises.",
+  "name": "camper-leaderboard",
+  "version": "0.1.0",
+  "description": "A Leaderboard Listing the Top Members of Free Code Camp",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --progress",
@@ -10,22 +10,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ibleedfilm/fcc-react-project.git"
+    "url": "git@github.com:ibleedfilm/camper-leaderboard.git"
   },
   "keywords": [
     "free code camp",
     "react",
-    "boilerplate",
+    "mocha",
     "webpack",
     "github pages",
-    "sass"
+    "sass",
+    "unit testing",
+    "sinon",
+    "chai"
   ],
   "author": "Rem Lampa <rem@lansangan.com> (http://www.remlampa.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ibleedfilm/fcc-react-project/issues"
+    "url": "https://github.com/ibleedfilm/camper-leaderboard/issues"
   },
-  "homepage": "https://github.com/ibleedfilm/fcc-react-project#readme",
+  "homepage": "https://github.com/ibleedfilm/camper-leaderboard#readme",
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
