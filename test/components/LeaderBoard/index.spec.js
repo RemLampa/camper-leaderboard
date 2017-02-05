@@ -17,6 +17,7 @@ describe('<LeaderBoard />', () => {
       allTime: []
     });
     expect(wrapper).to.have.state('error').to.be.null;
+    expect(wrapper).to.have.state('isLoading').to.be.true;
   });
 
   describe('Async Method fetchTopCampers()', () => {
@@ -101,7 +102,7 @@ describe('<LeaderBoard />', () => {
       expect(fetchTopCampersStub.withArgs('alltime').calledOnce).to.be.true;
     });
 
-    it('should update component topCampers state on resolved promise', () => {
+    it('should update component state on resolved promise', () => {
       const expectedState = {
         month: [{name: 'month'}],
         allTime: [{name: 'allTime'}]
@@ -113,16 +114,18 @@ describe('<LeaderBoard />', () => {
       return wrapperInstance.updateState().then(() => {
         expect(wrapper).to.have.state('topCampers').to.deep.equal(expectedState);
         expect(wrapper).to.have.state('error').to.be.null;
+        expect(wrapper).to.have.state('isLoading').to.be.false;
       });
     });
 
-    it('should update component error state on rejected promise', () => {
+    it('should update component state on rejected promise', () => {
       const errorMessage = 'An error occured.';
 
       fetchTopCampersStub.returns(Promise.reject(errorMessage));
 
       return wrapperInstance.updateState().then(() => {
         expect(wrapper).to.have.state('error').to.equal(errorMessage);
+        expect(wrapper).to.have.state('isLoading').to.be.false;
       });
     });
   });

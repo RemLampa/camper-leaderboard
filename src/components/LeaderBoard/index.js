@@ -8,7 +8,8 @@ export default class LeaderBoard extends Component {
         month: [],
         allTime: []
       },
-      error: null
+      error: null,
+      isLoading: true
     };
 
     this.fetchTopCampers = this.fetchTopCampers.bind(this);
@@ -53,10 +54,14 @@ export default class LeaderBoard extends Component {
           month: JSON.parse(topCampers[0]),
           allTime: JSON.parse(topCampers[1])
         },
-        error: null
+        error: null,
+        isLoading: false
       });
     }).catch(error => {
-      this.setState({ error });
+      this.setState({
+        error,
+        isLoading: false
+      });
     });
   }
 
