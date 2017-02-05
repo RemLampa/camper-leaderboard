@@ -131,19 +131,19 @@ describe('<LeaderBoard />', () => {
   });
 
   context('On Component Mount', () => {
-    let mountedWrapper, mountedWrapperInstance, updateStateSpy;
+    let mountedWrapper, mountedWrapperInstance, updateStateStub;
 
     beforeEach(() => {
-      updateStateSpy = stub(LeaderBoard.prototype, 'updateState');
+      updateStateStub = stub(LeaderBoard.prototype, 'updateState');
       mountedWrapper = mount(<LeaderBoard />);
     });
 
     afterEach(() => {
-      updateStateSpy.restore();
+      updateStateStub.restore();
     });
 
     it('should call method updateState() once', () => {
-      expect(updateStateSpy.calledOnce).to.be.true;
+      expect(updateStateStub.calledOnce).to.be.true;
     });
   });
 });
