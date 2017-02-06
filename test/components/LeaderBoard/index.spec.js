@@ -16,6 +16,7 @@ describe('<LeaderBoard />', () => {
       month: [],
       allTime: []
     });
+    expect(wrapper).to.have.state('sortBy').to.equal('month');
     expect(wrapper).to.have.state('error').to.be.null;
     expect(wrapper).to.have.state('isLoading').to.be.true;
   });
@@ -127,6 +128,22 @@ describe('<LeaderBoard />', () => {
         expect(wrapper).to.have.state('error').to.equal(errorMessage);
         expect(wrapper).to.have.state('isLoading').to.be.false;
       });
+    });
+  });
+
+  describe('Method toggleSort()', () => {
+    let wrapperInstance;
+
+    beforeEach(() => {
+      wrapperInstance = wrapper.instance();
+    });
+
+    it('should change sortBy state with provided argument', () => {
+      const newState = 'allTime';
+
+      wrapperInstance.toggleSort(newState);
+
+      expect(wrapper).to.have.state('sortBy').equal(newState);
     });
   });
 

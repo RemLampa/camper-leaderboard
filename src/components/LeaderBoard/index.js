@@ -9,6 +9,7 @@ export default class LeaderBoard extends Component {
         allTime: []
       },
       error: null,
+      sortBy: 'month',
       isLoading: true
     };
 
@@ -63,6 +64,12 @@ export default class LeaderBoard extends Component {
         isLoading: false
       });
     });
+  }
+
+  toggleSort(sortBy) {
+    if(this.state.sortBy !== sortBy) {
+      this.setState({ sortBy });
+    }
   }
 
   componentDidMount() {
