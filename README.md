@@ -1,8 +1,9 @@
-# markdown-preview
+# camper-leaderboard
 
 An app listing the top freeCodeCamp members in terms of brownie points.
 
-Features React, SASS, Bootstrap, CSS Flexbox, marked, mocha, chai, enzyme & sinon.
+Features React, SASS, Bootstrap, CSS Flexbox, XMLHttpRequest Object, ES6 Promise,
+mocha, chai, enzyme & sinon.
 
 [View Demo](https://ibleedfilm.github.io/camper-leaderboard).
 
