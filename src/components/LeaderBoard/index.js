@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import UserList from 'components/UserList';
 
 import style from './style.scss';
+import loadingGIF from './loader.gif';
 
 export default class LeaderBoard extends Component {
   constructor(props) {
@@ -51,6 +52,15 @@ export default class LeaderBoard extends Component {
   }
 
   updateState() {
+    this.setState({
+      topCampers: {
+        month: [],
+        allTime: []
+      },
+      error: null,
+      isLoading: true
+    });
+
     return Promise.all([
       this.fetchTopCampers('recent'),
       this.fetchTopCampers('alltime')
@@ -126,7 +136,18 @@ export default class LeaderBoard extends Component {
           { this.renderButton('month') }
           { this.renderButton('allTime') }
         </div>
-        <UserList users={users} />
+        {
+          this.state.isLoading &&
+          !this.state.error &&
+          <div className='loader'>
+            <img className='img-responsive center-block' src={loadingGIF} />
+          </div>
+        }
+        {
+          !this.state.isLoading &&
+          !this.state.error &&
+          <UserList users={users} />
+        }
       </div>
     );
   }

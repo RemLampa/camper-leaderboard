@@ -134,7 +134,13 @@ describe('<LeaderBoard />', () => {
   });
 
   context('On loading state', () => {
-    it('should');
+    it('should render a div with class loader', () => {
+      expect(wrapper).to.have.exactly(1).descendants('div.loader');
+    });
+
+    it('should not render UserList component', () => {
+      expect(wrapper).to.not.have.descendants(UserList);
+    });
   });
 
   context('On error state', () => {
@@ -176,7 +182,7 @@ describe('<LeaderBoard />', () => {
       expect(updateStateStub.calledOnce).to.be.true;
     });
 
-    describe('Method Render()', () => {
+    describe('Method Render() on load success', () => {
       let state;
 
       beforeEach(() => {
@@ -199,6 +205,10 @@ describe('<LeaderBoard />', () => {
         wrapper.setState({sortBy: 'allTime'});
 
         expect(wrapper).to.contain(<UserList users={state.topCampers.allTime} />);
+      });
+
+      it('should not render a div with class loader', () => {
+        expect(wrapper).to.not.have.descendants('div.loader');
       });
     });
   });
