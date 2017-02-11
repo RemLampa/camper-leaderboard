@@ -1,0 +1,32 @@
+.user-list {
+  margin-top: 2em;
+
+  font-size: 3vmin;
+
+  tr {
+    vertical-align: middle;
+
+    &:hover td {
+      color: #337ab7;
+    }
+  }
+
+  th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em 0;
+  }
+
+  td {
+    font-size: 5vmin;
+  }
+
+  .user-row {
+    cursor: pointer;
+
+    img {
+      max-width: 150px;
+      max-height: 150px;
+    }
+  }
+}
