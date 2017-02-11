@@ -1,11 +1,20 @@
 #leader-board {
   margin: 2em;
 
+  button {
+    font-size: 3vmin;
+  }
+
   .loader {
     margin-top: 5%;
   }
 
-  button {
-    font-size: 3vmin;
+  .error {
+    margin: 5% 0;
+    font-size: 4vmin;
+  }
+
+  a {
+    cursor: pointer;
   }
 }

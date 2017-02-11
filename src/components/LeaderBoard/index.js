@@ -137,6 +137,12 @@ export default class LeaderBoard extends Component {
           { this.renderButton('allTime') }
         </div>
         {
+          this.state.error &&
+          <div className='alert alert-danger error' role='alert'>
+            <strong>Oh snap!</strong> Failed to fetch users. <a onClick={this.updateState}>Try again.</a>
+          </div>
+        }
+        {
           this.state.isLoading &&
           !this.state.error &&
           <div className='loader'>

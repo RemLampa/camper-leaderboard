@@ -138,13 +138,31 @@ describe('<LeaderBoard />', () => {
       expect(wrapper).to.have.exactly(1).descendants('div.loader');
     });
 
+    it('should not render a div with class error', () => {
+      expect(wrapper).to.not.have.descendants('div.error');
+    });
+
     it('should not render UserList component', () => {
       expect(wrapper).to.not.have.descendants(UserList);
     });
   });
 
   context('On error state', () => {
-    it('should');
+    beforeEach(() => {
+      wrapper.setState({error: 'test error'});
+    });
+
+    it('should render a div with class error', () => {
+      expect(wrapper).to.have.exactly(1).descendants('div.error');
+    });
+
+    it('should not render a div with class loader', () => {
+      expect(wrapper).to.not.have.descendants('div.loader');
+    });
+
+    it('should not render UserList component', () => {
+      expect(wrapper).to.not.have.descendants(UserList);
+    });
   });
 
   describe('Toggle Buttons', () => {
@@ -209,6 +227,10 @@ describe('<LeaderBoard />', () => {
 
       it('should not render a div with class loader', () => {
         expect(wrapper).to.not.have.descendants('div.loader');
+      });
+
+      it('should not render a div with class error', () => {
+        expect(wrapper).to.not.have.descendants('div.error');
       });
     });
   });
