@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+import UserList from 'components/UserList';
+
 export default class LeaderBoard extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ export default class LeaderBoard extends Component {
 
     this.fetchTopCampers = this.fetchTopCampers.bind(this);
     this.updateState = this.updateState.bind(this);
+    this.toggleSort = this.toggleSort.bind(this);
   }
 
   fetchTopCampers( timeFrame ) {
@@ -77,8 +80,13 @@ export default class LeaderBoard extends Component {
   }
 
   render() {
+    const users = this.state.sortBy === 'month' ?
+      this.state.topCampers.month :
+      this.state.topCampers.allTime;
+
     return (
       <div>
+        <UserList users={users} toggle={this.toggleSort} />
       </div>
     );
   }

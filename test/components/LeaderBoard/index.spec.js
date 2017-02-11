@@ -1,5 +1,7 @@
 import LeaderBoard from 'components/LeaderBoard';
 
+import UserList from 'components/UserList';
+
 describe('<LeaderBoard />', () => {
   let wrapper;
 
@@ -147,12 +149,21 @@ describe('<LeaderBoard />', () => {
     });
   });
 
+  context('On loading state', () => {
+    it('should');
+  });
+
+  context('On error state', () => {
+    it('should');
+  });
+
   context('On Component Mount', () => {
     let mountedWrapper, mountedWrapperInstance, updateStateStub;
 
     beforeEach(() => {
       updateStateStub = stub(LeaderBoard.prototype, 'updateState');
       mountedWrapper = mount(<LeaderBoard />);
+      mountedWrapperInstance = mountedWrapper.instance();
     });
 
     afterEach(() => {
@@ -161,6 +172,32 @@ describe('<LeaderBoard />', () => {
 
     it('should call method updateState() once', () => {
       expect(updateStateStub.calledOnce).to.be.true;
+    });
+
+    describe('Method Render()', () => {
+      let state;
+
+      beforeEach(() => {
+        state = {
+          topCampers: {
+            month: [{test: 'testMonth'}],
+            allTime: [{test: 'testAllTime'}]
+          },
+          isLoading: false
+        };
+
+        mountedWrapper.setState(state);
+      });
+
+      it('should render a <UserList /> with user and toggle attributes', () => {
+        expect(mountedWrapper).to.contain(<UserList users={state.topCampers.month} toggle={mountedWrapperInstance.toggleSort}/>);
+      });
+
+      it('should pass correct users to <UserList /> when state.sortBy changes', () => {
+        mountedWrapper.setState({sortBy: 'allTime'});
+
+        expect(mountedWrapper).to.contain(<UserList users={state.topCampers.allTime} toggle={mountedWrapperInstance.toggleSort}/>);
+      });
     });
   });
 });
