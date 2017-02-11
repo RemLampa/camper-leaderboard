@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import UserList from 'components/UserList';
 
+import style from './style.scss';
+
 export default class LeaderBoard extends Component {
   constructor(props) {
     super(props);
@@ -92,13 +94,37 @@ export default class LeaderBoard extends Component {
       this.state.topCampers.allTime;
 
     return (
-      <div>
-        <button id='toggle-month' onClick={this.toggleSortByMonth}>
-          By Month
-        </button>
-        <button id='toggle-all-time' onClick={this.toggleSortByAllTime}>
-          All Time
-        </button>
+      <div id='leader-board'>
+        <div className='btn-group btn-group-justified' role='group'>
+          <div className='btn-group btn-group-lg' role='group'>
+            <button
+              type='button'
+              className={ 'btn ' + (
+                this.state.sortBy ===
+                  'month' ?
+                  'btn-primary' :
+                  'btn-default'
+              )}
+              id='toggle-month'
+              onClick={this.toggleSortByMonth}>
+              By Month
+            </button>
+          </div>
+          <div className='btn-group btn-group-lg' role='group'>
+            <button
+              type='button'
+              className={ 'btn ' + (
+                this.state.sortBy ===
+                  'allTime' ?
+                  'btn-primary' :
+                  'btn-default'
+              )}
+              id='toggle-all-time'
+              onClick={this.toggleSortByAllTime}>
+              All Time
+            </button>
+          </div>
+        </div>
         <UserList users={users} />
       </div>
     );
