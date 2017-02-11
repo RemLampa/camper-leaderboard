@@ -19,8 +19,7 @@ export default class LeaderBoard extends Component {
 
     this.fetchTopCampers = this.fetchTopCampers.bind(this);
     this.updateState = this.updateState.bind(this);
-    this.toggleSortByMonth = this.toggleSortByMonth.bind(this);
-    this.toggleSortByAllTime = this.toggleSortByAllTime.bind(this);
+    this.toggleSort = this.toggleSort.bind(this);
   }
 
   fetchTopCampers( timeFrame ) {
@@ -72,16 +71,29 @@ export default class LeaderBoard extends Component {
     });
   }
 
-  toggleSortByMonth() {
-    if(this.state.sortBy !== 'month') {
-      this.setState({sortBy: 'month'});
+  toggleSort(sortBy) {
+    if(this.state.sortBy !== sortBy) {
+      this.setState({ sortBy });
     }
   }
 
-  toggleSortByAllTime() {
-    if(this.state.sortBy !== 'allTime') {
-      this.setState({sortBy: 'allTime'});
-    }
+  renderButton(sortTrigger) {
+    return (
+      <div className='btn-group btn-group-lg' role='group'>
+        <button
+          type='button'
+          className={ 'btn ' + (
+            this.state.sortBy ===
+              sortTrigger ?
+              'btn-primary' :
+              'btn-default'
+          )}
+          id={ 'toggle-' + sortTrigger }
+          onClick={() => this.toggleSort(sortTrigger)}>
+          By Month
+        </button>
+      </div>
+    );
   }
 
   componentDidMount() {
@@ -96,34 +108,8 @@ export default class LeaderBoard extends Component {
     return (
       <div id='leader-board'>
         <div className='btn-group btn-group-justified' role='group'>
-          <div className='btn-group btn-group-lg' role='group'>
-            <button
-              type='button'
-              className={ 'btn ' + (
-                this.state.sortBy ===
-                  'month' ?
-                  'btn-primary' :
-                  'btn-default'
-              )}
-              id='toggle-month'
-              onClick={this.toggleSortByMonth}>
-              By Month
-            </button>
-          </div>
-          <div className='btn-group btn-group-lg' role='group'>
-            <button
-              type='button'
-              className={ 'btn ' + (
-                this.state.sortBy ===
-                  'allTime' ?
-                  'btn-primary' :
-                  'btn-default'
-              )}
-              id='toggle-all-time'
-              onClick={this.toggleSortByAllTime}>
-              All Time
-            </button>
-          </div>
+          { this.renderButton('month') }
+          { this.renderButton('allTime') }
         </div>
         <UserList users={users} />
       </div>

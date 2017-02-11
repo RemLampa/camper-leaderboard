@@ -152,9 +152,9 @@ describe('<LeaderBoard />', () => {
     });
 
     it('should have a button that toggles sortBy state to "allTime"', () => {
-      expect(wrapper).to.have.exactly(1).descendants('button#toggle-all-time');
+      expect(wrapper).to.have.exactly(1).descendants('button#toggle-allTime');
 
-      wrapper.find('button#toggle-all-time').simulate('click');
+      wrapper.find('button#toggle-allTime').simulate('click');
       expect(wrapper).to.have.state('sortBy').to.equal('allTime');
     });
   });
