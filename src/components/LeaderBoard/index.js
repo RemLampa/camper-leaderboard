@@ -78,6 +78,21 @@ export default class LeaderBoard extends Component {
   }
 
   renderButton(sortTrigger) {
+    let buttonText, buttonID;
+
+    switch(sortTrigger) {
+      case 'month':
+        buttonText = 'By Month';
+        buttonID = 'toggle-month';
+        break;
+      case 'allTime':
+        buttonText = 'All Time';
+        buttonID = 'toggle-all-time'
+        break;
+      default:
+        return null;
+    };
+
     return (
       <div className='btn-group btn-group-lg' role='group'>
         <button
@@ -88,9 +103,9 @@ export default class LeaderBoard extends Component {
               'btn-primary' :
               'btn-default'
           )}
-          id={ 'toggle-' + sortTrigger }
+          id={ buttonID }
           onClick={() => this.toggleSort(sortTrigger)}>
-          By Month
+          { buttonText }
         </button>
       </div>
     );
