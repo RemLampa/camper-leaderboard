@@ -17,7 +17,8 @@ export default class LeaderBoard extends Component {
 
     this.fetchTopCampers = this.fetchTopCampers.bind(this);
     this.updateState = this.updateState.bind(this);
-    this.toggleSort = this.toggleSort.bind(this);
+    this.toggleSortByMonth = this.toggleSortByMonth.bind(this);
+    this.toggleSortByAllTime = this.toggleSortByAllTime.bind(this);
   }
 
   fetchTopCampers( timeFrame ) {
@@ -69,9 +70,15 @@ export default class LeaderBoard extends Component {
     });
   }
 
-  toggleSort(sortBy) {
-    if(this.state.sortBy !== sortBy) {
-      this.setState({ sortBy });
+  toggleSortByMonth() {
+    if(this.state.sortBy !== 'month') {
+      this.setState({sortBy: 'month'});
+    }
+  }
+
+  toggleSortByAllTime() {
+    if(this.state.sortBy !== 'allTime') {
+      this.setState({sortBy: 'allTime'});
     }
   }
 
@@ -86,7 +93,13 @@ export default class LeaderBoard extends Component {
 
     return (
       <div>
-        <UserList users={users} toggle={this.toggleSort} />
+        <button id='toggle-month' onClick={this.toggleSortByMonth}>
+          By Month
+        </button>
+        <button id='toggle-all-time' onClick={this.toggleSortByAllTime}>
+          All Time
+        </button>
+        <UserList users={users} />
       </div>
     );
   }

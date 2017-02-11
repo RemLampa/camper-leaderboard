@@ -133,22 +133,6 @@ describe('<LeaderBoard />', () => {
     });
   });
 
-  describe('Method toggleSort()', () => {
-    let wrapperInstance;
-
-    beforeEach(() => {
-      wrapperInstance = wrapper.instance();
-    });
-
-    it('should change sortBy state with provided argument', () => {
-      const newState = 'allTime';
-
-      wrapperInstance.toggleSort(newState);
-
-      expect(wrapper).to.have.state('sortBy').equal(newState);
-    });
-  });
-
   context('On loading state', () => {
     it('should');
   });
@@ -157,13 +141,31 @@ describe('<LeaderBoard />', () => {
     it('should');
   });
 
+  describe('Toggle Buttons', () => {
+    it('should have a button that toggles sortBy state to "month"', () => {
+      expect(wrapper).to.have.exactly(1).descendants('button#toggle-month');
+
+      wrapper.setState({sortBy: 'allTime'});
+
+      wrapper.find('button#toggle-month').simulate('click');
+      expect(wrapper).to.have.state('sortBy').to.equal('month');
+    });
+
+    it('should have a button that toggles sortBy state to "allTime"', () => {
+      expect(wrapper).to.have.exactly(1).descendants('button#toggle-all-time');
+
+      wrapper.find('button#toggle-all-time').simulate('click');
+      expect(wrapper).to.have.state('sortBy').to.equal('allTime');
+    });
+  });
+
   context('On Component Mount', () => {
-    let mountedWrapper, mountedWrapperInstance, updateStateStub;
+    let wrapperInstance, updateStateStub;
 
     beforeEach(() => {
       updateStateStub = stub(LeaderBoard.prototype, 'updateState');
-      mountedWrapper = mount(<LeaderBoard />);
-      mountedWrapperInstance = mountedWrapper.instance();
+      wrapper = mount(<LeaderBoard />);
+      wrapperInstance = wrapper.instance();
     });
 
     afterEach(() => {
@@ -186,17 +188,17 @@ describe('<LeaderBoard />', () => {
           isLoading: false
         };
 
-        mountedWrapper.setState(state);
+        wrapper.setState(state);
       });
 
       it('should render a <UserList /> with user and toggle attributes', () => {
-        expect(mountedWrapper).to.contain(<UserList users={state.topCampers.month} toggle={mountedWrapperInstance.toggleSort}/>);
+        expect(wrapper).to.contain(<UserList users={state.topCampers.month} />);
       });
 
       it('should pass correct users to <UserList /> when state.sortBy changes', () => {
-        mountedWrapper.setState({sortBy: 'allTime'});
+        wrapper.setState({sortBy: 'allTime'});
 
-        expect(mountedWrapper).to.contain(<UserList users={state.topCampers.allTime} toggle={mountedWrapperInstance.toggleSort}/>);
+        expect(wrapper).to.contain(<UserList users={state.topCampers.allTime} />);
       });
     });
   });
