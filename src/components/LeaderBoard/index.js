@@ -33,6 +33,8 @@ export default class LeaderBoard extends Component {
         true
       );
 
+      xhr.timeout = 15000;
+
       xhr.onreadystatechange = function() {
         if(this.readyState === 4  && this.status === 200) {
           resolve(xhr.responseText);
@@ -45,6 +47,10 @@ export default class LeaderBoard extends Component {
             reject('An unknown error occured!');
           }
         }
+      };
+
+      xhr.ontimeout = function(e) {
+        reject('Request timed out!');
       };
 
       xhr.send(null);
