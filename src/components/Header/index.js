@@ -10,7 +10,7 @@ export default function Header() {
           </a>
         </div>
         <div className='collapse navbar-collapse'>
-          <ul className='nav navbar-nav'>
+          <ul className='nav navbar-nav navbar-right'>
             <li>
               <a href='#top'>Back to Top</a>
             </li>

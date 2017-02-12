@@ -10,6 +10,9 @@ export default function App() {
     <div>
       <Header />
       <a name='top'>&nbsp;</a>
+      <div className='page-header'>
+        <h1>freeCodeCamp LeaderBoard</h1>
+      </div>
       <LeaderBoard />
     </div>
   );
