@@ -1,7 +1,5 @@
 import React from 'react';
 
-import style from './style.scss';
-
 export default function Header() {
   return (
     <nav className='navbar navbar-inverse navbar-fixed-top'>
