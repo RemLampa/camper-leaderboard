@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from 'components/Header';
+import NavBar from 'components/NavBar';
 import LeaderBoard from 'components/LeaderBoard';
 
 import './app.scss';
@@ -8,12 +8,12 @@ import './app.scss';
 export default function App() {
   return (
     <div>
-      <Header />
-      <a name='top'>&nbsp;</a>
+      <a name='top'></a>
       <div className='page-header'>
         <h1>freeCodeCamp LeaderBoard</h1>
       </div>
       <LeaderBoard />
+      <NavBar />
     </div>
   );
 }

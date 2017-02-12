@@ -1,10 +1,10 @@
-import Header from 'components/Header';
+import NavBar from 'components/NavBar';
 
-describe('<Header />', () => {
+describe('<NavBar />', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Header />);
+    wrapper = shallow(<NavBar />);
   });
 
   it('should be a nav', () => {

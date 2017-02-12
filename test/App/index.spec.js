@@ -1,6 +1,6 @@
 import App from 'App';
 
-import Header from 'components/Header';
+import NavBar from 'components/NavBar';
 import LeaderBoard from 'components/LeaderBoard';
 
 describe('<App />', () => {
@@ -13,8 +13,8 @@ describe('<App />', () => {
     expect(wrapper.type()).to.equal('div');
   });
 
-  it('should render a <Header />', () => {
-    expect(wrapper).to.contain(<Header />);
+  it('should render a <NavBar />', () => {
+    expect(wrapper).to.contain(<NavBar />);
   });
 
   it('should render a <LeaderBoard />', () => {
