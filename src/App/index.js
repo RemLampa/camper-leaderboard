@@ -9,6 +9,7 @@ export default function App() {
   return (
     <div>
       <Header />
+      <a name='top'>&nbsp;</a>
       <LeaderBoard />
     </div>
   );

@@ -1,5 +1,29 @@
 import React from 'react';
 
+import style from './style.scss';
+
 export default function Header() {
-  return <h1>freeCodeCamp LeaderBoard</h1>;
+  return (
+    <nav className='navbar navbar-inverse navbar-fixed-top'>
+      <div className='container-fluid'>
+        <div className='navbar-header'>
+          <a className='navbar-brand' href='#'>
+            freeCodeCamp LeaderBoard
+          </a>
+        </div>
+        <div className='collapse navbar-collapse'>
+          <ul className='nav navbar-nav'>
+            <li>
+              <a href='#top'>Back to Top</a>
+            </li>
+            <li>
+              <a className='navbar-link' href='https://github.com/ibleedfilm/camper-leaderboard'>
+                Source Code
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 };
