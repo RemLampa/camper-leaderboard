@@ -5,6 +5,8 @@ An app listing the top freeCodeCamp members in terms of brownie points.
 Features React, SASS, Bootstrap, XMLHttpRequest Object, ES6 Promise,
 mocha, chai, enzyme & sinon.
 
+Uses [fcc-react-project](https://github.com/ibleedfilm/fcc-react-project) boilerplate.
+
 [View Demo](https://ibleedfilm.github.io/camper-leaderboard).
 
 ## USAGE
