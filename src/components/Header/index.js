@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <nav className='navbar navbar-inverse navbar-fixed-top'>
+    <nav className='navbar navbar-inverse navbar-fixed-bottom'>
       <div className='container-fluid'>
         <div className='navbar-header'>
           <a className='navbar-brand' href='#'>
